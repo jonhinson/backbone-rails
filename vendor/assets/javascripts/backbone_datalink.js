@@ -14,7 +14,7 @@
           attrs = {};
           if(el.is("input[type='checkbox']") && $("input[type='checkbox'][name='"+name+"']").length > 1) {
             attrs[el.attr("name")] = []
-            $("input[type='checkbox'][name='"+name+"'][checked]").each(function() {
+            $("input[type='checkbox'][name='"+name+"']:checked").each(function() {
               attrs[el.attr("name")].push($(this).val());
             });
           } else {
