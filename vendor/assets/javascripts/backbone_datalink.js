@@ -12,7 +12,14 @@
           var attrs;
           el = $(this);
           attrs = {};
-          attrs[el.attr("name")] = el.val();
+          if(el.is("input[type='checkbox']") && $("input[type='checkbox'][name='"+name+"']").length > 1) {
+            attrs[el.attr("name")] = []
+            $("input[type='checkbox'][name='"+name+"'][checked]").each(function() {
+              attrs[el.attr("name")].push($(this).val());
+            });
+          } else {
+            attrs[el.attr("name")] = el.val();
+          }
           return model.set(attrs);
         });
       });
